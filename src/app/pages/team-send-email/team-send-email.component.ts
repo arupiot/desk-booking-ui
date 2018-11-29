@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamSendEmailComponent implements OnInit {
 
+  email1: string;
+  email2: string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+
+    console.log(this.email1, this.email2);
+
   }
 
 }
