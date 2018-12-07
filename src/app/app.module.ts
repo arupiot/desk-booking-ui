@@ -11,6 +11,7 @@ import { SplashComponent } from './pages/splash/splash.component';
 
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback.component';
+import { PostLoginComponent } from './pages/post-login/post-login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CallbackComponent } from './callback.component';
     ChooseDeskComponent,
     TeamSendEmailComponent,
     SplashComponent,
-    CallbackComponent
+    CallbackComponent,
+    PostLoginComponent
   ],
   imports: [
     BrowserModule,
