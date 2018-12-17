@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SplashComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,//This is currently undefined. It should not be
+    private authService: AuthService,
     private router: Router
     ) {}
 

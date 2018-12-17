@@ -23,8 +23,6 @@ export class PostLoginComponent implements OnInit {
   ngOnInit() {
     console.log("back");
 
-    
-
     // this.authService.isLoggedIn().subscribe();
     
     let checkLoggedIn = setInterval(() => {
@@ -33,7 +31,7 @@ export class PostLoginComponent implements OnInit {
       
       if (this.authService.isLoggedIn)
       {
-        // clearInterval(timer);
+        clearInterval(checkLoggedIn);
         this.router.navigate(['/choose-desk']);
       }
       else
@@ -41,21 +39,6 @@ export class PostLoginComponent implements OnInit {
         console.log("not logged in");
       }
     },1000);
-  }
-  check()
-  {
-    console.log("checking");
-    console.log(this.authService);
-    
-    if (this.authService.isLoggedIn)
-    {
-      // clearInterval(timer);
-      this.router.navigate(['/choose-desk']);
-    }
-    else
-    {
-      console.log("not logged in");
-    }
   }
   click()
   {
