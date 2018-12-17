@@ -15,18 +15,32 @@ import { Observable } from 'rxjs';
 export class PostLoginComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthService,//This is currently undefined. It should not be
     private router: Router
     ) { }
   
 
   ngOnInit() {
     console.log("back");
+
     
+
+    // this.authService.isLoggedIn().subscribe();
     
-    
-    // let checkLoggedIn;
-    // checkLoggedIn = setInterval(this.check,1000);
+    let checkLoggedIn = setInterval(() => {
+      console.log("check");
+      console.log(this.authService);
+      
+      if (this.authService.isLoggedIn)
+      {
+        // clearInterval(timer);
+        this.router.navigate(['/choose-desk']);
+      }
+      else
+      {
+        console.log("not logged in");
+      }
+    },1000);
   }
   check()
   {
@@ -48,5 +62,4 @@ export class PostLoginComponent implements OnInit {
     console.log("clicked");
     this.router.navigate(['/choose-desk']);
   }
-
 }
