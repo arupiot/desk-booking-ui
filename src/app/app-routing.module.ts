@@ -5,24 +5,42 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { ChooseDeskComponent } from './pages/choose-desk/choose-desk.component';
 import { TeamSendEmailComponent } from './pages/team-send-email/team-send-email.component';
+import { SplashComponent } from './pages/splash/splash.component';
+import { CallbackComponent } from './callback.component';
+
+// authentication
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/choose-desk',
+    redirectTo: 'splash',
     pathMatch: 'full'
   }, {
+    path: 'splash',
+    component: SplashComponent
+  }, {
     path: 'choose-desk',
-    component: ChooseDeskComponent
+    component: ChooseDeskComponent,
+    canActivate: [
+      AuthGuard
+    ]
   }, {
     path: 'team-send-email',
-    component: TeamSendEmailComponent
+    component: TeamSendEmailComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  }, {
+    path: 'callback',
+    component: CallbackComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

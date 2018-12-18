@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from './../../auth/auth.service';
+
 @Component({
   selector: 'app-choose-desk',
   templateUrl: './choose-desk.component.html',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseDeskComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    // public authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
