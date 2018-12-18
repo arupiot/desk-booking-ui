@@ -16,8 +16,9 @@ export class SplashComponent implements OnInit {
 
   ngOnInit()
   {
+    console.log("splash");
     console.log("Run login");
-    if (!this.authService.isLoggedIn)//In theory will redirect to home page if the user is logged in and will open login page if the user is not
+    if (!this.authService.isLoggedIn)
     {
       console.log("not logged in");
       this.authService.login()
@@ -28,4 +29,8 @@ export class SplashComponent implements OnInit {
       this.router.navigate(['/choose-desk']);
     }
   }
+  // click()
+  // {
+  //   this.authService.login();
+  // }
 }

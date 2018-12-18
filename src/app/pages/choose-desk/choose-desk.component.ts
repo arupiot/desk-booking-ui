@@ -10,7 +10,7 @@ import { AuthService } from './../../auth/auth.service';
 export class ChooseDeskComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    // public authService: AuthService
   ) { }
 
   ngOnInit() {

@@ -29,22 +29,22 @@ export class AuthService {
 
   login() {
     // Auth0 authorize request
-    console.log("login");
+    // console.log("login");
     this.auth0.authorize();
   }
 
   handleLoginCallback() {
     // When Auth0 hash parsed, get profile
-    console.log("handleLoginCallback");
+    // console.log("handleLoginCallback");
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
-        console.log("yes handleLoginCallback");
+        // console.log("yes handleLoginCallback");
         window.location.hash = '/';
         this.getUserInfo(authResult);
       } else if (err) {
         console.error(`Error: ${err.error}`);
       }
-      this.router.navigate(['/post-login']);
+      // this.router.navigate(['/choose-desk']);
     });
   }
 
@@ -60,23 +60,27 @@ export class AuthService {
     // Use access token to retrieve user's profile and set session
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
-        console.log("yes getUserInfo");
+        // console.log("yes getUserInfo");
         this._setSession(authResult, profile);
       }
       else
       {
-        console.log("no getUserInfo");
+        // console.log("no getUserInfo");
       }
     });
   }
 
   private _setSession(authResult, profile) {
+
+    localStorage.setItem('isLoggedIn','true');
     // Save authentication data and update login status subject
-    console.log("setSession");
+    // console.log("setSession");
     this.expiresAt = authResult.expiresIn * 1000 + Date.now();
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
     this.authenticated = true;
+
+    this.router.navigate(['/choose-desk']);
   }
 
   logout() {
@@ -87,13 +91,18 @@ export class AuthService {
       returnTo: 'http://localhost:4200',
       clientID: environment.auth.clientID
     });
+    localStorage.removeItem('isLoggedIn');
   }
 
   get isLoggedIn(): boolean {
     // Check if current date is before token
     // expiration and user is signed in locally
-    console.log("get");
+    // console.log("get");
     
+    // console.log("Date: " + Date.now());
+    // console.log("expiresAt: " + this.expiresAt);
+    // console.log("authenticated: " + this.authenticated);
+
     return Date.now() < this.expiresAt && this.authenticated;
   }
 
