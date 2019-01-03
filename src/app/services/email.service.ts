@@ -9,8 +9,8 @@ export class EmailService {
 
   constructor(private http: HttpClient) { }
 
-  sendEmail()
+  sendEmail(email :String)
   {
-    return this.http.get<String>('http://localhost:8080/email');
+    return this.http.get<String>('http://localhost:8080/email' + email);
   }
 }

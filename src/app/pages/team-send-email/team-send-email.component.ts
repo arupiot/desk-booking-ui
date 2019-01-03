@@ -19,6 +19,6 @@ export class TeamSendEmailComponent implements OnInit {
 
   onSubmit(){
     console.log(this.email1, this.email2);
-    this.emailService.sendEmail().subscribe(val => console.log(val));
+    this.emailService.sendEmail(this.email1).subscribe(val => console.log(val));
   }
 }
