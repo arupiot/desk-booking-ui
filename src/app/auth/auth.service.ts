@@ -14,7 +14,7 @@ export class AuthService {
     domain: environment.auth.domain,
     responseType: 'token',
     redirectUri: environment.auth.redirect,
-    //audience: environment.auth.audience,
+    audience: 'https://sendgrid/email',
     scope: environment.auth.scope
   });
   // Store authentication data
@@ -104,6 +104,11 @@ export class AuthService {
     // console.log("authenticated: " + this.authenticated);
 
     return Date.now() < this.expiresAt && this.authenticated;
+  }
+
+  returnAccessToken()
+  {
+    return this.accessToken;
   }
 
 }

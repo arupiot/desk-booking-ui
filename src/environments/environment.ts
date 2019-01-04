@@ -2,14 +2,16 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//This needs to be put into .gitignore, will probably have the clientsecret in it
+
 export const environment = {
   production: false,
   auth: {
     clientID: 'M0q1Dt5-1OPgqwG2xza_NsnMfYrH_hdD',
     domain: 'angular-authentication.eu.auth0.com',
-    //audience: 'http://localhost:3001',
+    // audience: 'http://localhost:3001',
     redirect: 'http://localhost:4200/callback',
-    scope: 'openid profile email'
+    scope: 'openid profile '
   }
 };
 
