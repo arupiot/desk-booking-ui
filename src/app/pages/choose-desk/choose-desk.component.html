@@ -1,5 +1,20 @@
-<a routerLink="/team-send-email" class="skip-to-email">
+<!-- <a routerLink="/team-send-email" class="skip-to-email">
   <div class="desk-picked">
     Carry on...
   </div>
-</a>
+</a> -->
+
+<div id="top-text">
+  <div class="please">Please sign in to your IoT Desk</div>
+  <div class="help">Help</div>
+</div>
+<div id="team-choice">
+  <div class="one">One desk</div>
+  <div class="team">Team</div>
+</div>
+
+<div id="desks">
+  <div *ngFor="let number of numbers">
+    <div class=desk>{{number}}</div>
+  </div>
+</div>

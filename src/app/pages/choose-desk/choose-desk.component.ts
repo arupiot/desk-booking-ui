@@ -8,12 +8,14 @@ import { AuthService } from './../../auth/auth.service';
   styleUrls: ['./choose-desk.component.less']
 })
 export class ChooseDeskComponent implements OnInit {
-
+  numbers;
   constructor(
+    
     // public authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.numbers = [1,2,3,4,5,6,7,8,9,10];
   }
 
 }

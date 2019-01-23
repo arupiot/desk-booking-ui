@@ -34,11 +34,14 @@ export class AuthService {
   }
 
   handleLoginCallback() {
+    console.log("callback")
     // When Auth0 hash parsed, get profile
     // console.log("handleLoginCallback");
     this.auth0.parseHash((err, authResult) => {
+      console.log("authResult:", authResult);
+      console.log("error:",err);
       if (authResult && authResult.accessToken) {
-        // console.log("yes handleLoginCallback");
+        console.log("yes handleLoginCallback");
         window.location.hash = '/';
         this.getUserInfo(authResult);
       } else if (err) {
@@ -79,6 +82,8 @@ export class AuthService {
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
     this.authenticated = true;
+
+    console.log("navigate");
 
     this.router.navigate(['/choose-desk']);
   }
