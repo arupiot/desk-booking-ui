@@ -22,14 +22,23 @@ export class EmailService {
     public auth: AuthService
     ) { }
 
-  sendEmail(email :String)
-  {
+  sendEmail(email: any) {
     // code from auth0 calling an api tutorial https://auth0.com/docs/quickstart/spa/angular2/03-calling-an-api
+
+    console.log(email);
+    
+
     this.message = '';
     const access = this.auth.returnAccessToken();
-    this.http.post('http://localhost:8080/email',null,{
-      headers: new HttpHeaders().set('Authorization', `Bearer ${access}`)
-        })
+    
+    this.http.post(
+      'http://localhost:8080/email', 
+      {
+        "emails" : email
+      }, 
+      {
+        headers: new HttpHeaders().set('Authorization', `Bearer ${access}`)
+      })
         .subscribe(
           data => this.message = (data as IApiResponse).message,
           error => this.message = error
