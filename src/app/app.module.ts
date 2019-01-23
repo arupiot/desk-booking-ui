@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component';
 import { ChooseDeskComponent } from './pages/choose-desk/choose-desk.component';
@@ -11,6 +12,8 @@ import { SplashComponent } from './pages/splash/splash.component';
 
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback.component';
+
+import { EmailService } from './services/email.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,10 @@ import { CallbackComponent } from './callback.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, EmailService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
