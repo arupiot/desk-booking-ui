@@ -3,13 +3,13 @@
   <h5>Enter desk user email(s) (inclusing yourself!)</h5>
   <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
     <div class="form-group">
-      <label for="name">Email 1</label>
-      <input name="email1" [(ngModel)]="email1" type="email" class="form-control" id="name" required>
+      <label for="email1" >Email 1</label>
+      <input type="email" [(ngModel)]="email1" name="email1" #email="ngModel" email required>
     </div>
 
     <div class="form-group">
       <label for="alterEgo">Email 2</label>
-      <input name="email2" [(ngModel)]="email2" type="text" class="form-control" id="alterEgo">
+      <input name="email1" [(ngModel)]="email2" type="text" class="form-control" id="alterEgo">
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Book!</button>
