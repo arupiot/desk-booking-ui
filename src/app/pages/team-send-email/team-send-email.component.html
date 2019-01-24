@@ -4,7 +4,7 @@
   <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
     <div class="form-group">
       <label for="name">Email 1</label>
-      <input name="email1" [(ngModel)]="email1" type="text" class="form-control" id="name" required>
+      <input name="email1" [(ngModel)]="email1" type="email" class="form-control" id="name" required>
     </div>
 
     <div class="form-group">
@@ -13,6 +13,5 @@
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Book!</button>
-
   </form>
 </div>
