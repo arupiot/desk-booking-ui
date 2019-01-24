@@ -1,12 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { EmailService } from './../../services/email.service';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-interface IApiResponse {
-  message: string;
-  error: string;
-}
 
 @Component({
   selector: 'app-team-send-email',
@@ -38,7 +32,7 @@ export class TeamSendEmailComponent implements OnInit {
       email2: this.email2})
     .subscribe(
       response =>{
-        console.log("response:",response);//(suc as IApiResponse).message
+        console.log("response:",response);
         this.router.navigate(['/email-success']);
       }, 
       error =>{
@@ -47,6 +41,5 @@ export class TeamSendEmailComponent implements OnInit {
         this.submittedError = true;
       }
     );
-    //this.emailService.sendEmail(this.email1).subscribe(val => console.log(val));
   }
 }
