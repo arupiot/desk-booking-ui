@@ -19,7 +19,7 @@ export class TeamSendEmailComponent implements OnInit {
   email1: string;
   email2: string;
 
-  submitted=false;
+  submittedError=false;
   message: string;
   error: string;
 
@@ -42,8 +42,9 @@ export class TeamSendEmailComponent implements OnInit {
         this.router.navigate(['/email-success']);
       }, 
       error =>{
-      this.error = error
-      console.log("error message:", this.message);
+        this.error = error
+        console.log("error message:", this.error);
+        this.submittedError = true;
       }
     );
     //this.emailService.sendEmail(this.email1).subscribe(val => console.log(val));

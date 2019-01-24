@@ -15,3 +15,6 @@
     <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Book!</button>
   </form>
 </div>
+<div *ngIf="submittedError">
+  <p>An error has occurred, the email has not been sent</p>
+</div>

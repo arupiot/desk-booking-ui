@@ -38,7 +38,10 @@ const routes: Routes = [
     component: CallbackComponent
   }, {
     path: 'email-success',
-    component: EmailSuccessComponent
+    component: EmailSuccessComponent,
+    canActivate: [
+      AuthGuard
+    ]
   }
 ];
 
