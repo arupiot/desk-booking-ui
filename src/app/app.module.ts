@@ -14,6 +14,7 @@ import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback.component';
 
 import { EmailService } from './services/email.service';
+import { EmailSuccessComponent } from './pages/email-success/email-success.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EmailService } from './services/email.service';
     ChooseDeskComponent,
     TeamSendEmailComponent,
     SplashComponent,
-    CallbackComponent
+    CallbackComponent,
+    EmailSuccessComponent
   ],
   imports: [
     BrowserModule,

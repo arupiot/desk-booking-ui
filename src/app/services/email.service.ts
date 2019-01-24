@@ -5,9 +5,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 
 
-interface IApiResponse {
-  message: string;
-}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,19 +29,15 @@ export class EmailService {
     this.message = '';
     const access = this.auth.returnAccessToken();
     
-    this.http.post(
+    return this.http.post(
       'http://localhost:8080/email', 
       {
         "emails" : email
       }, 
       {
-        headers: new HttpHeaders().set('Authorization', `Bearer ${access}`)
-      })
-        .subscribe(
-          data => this.message = (data as IApiResponse).message,
-          error => this.message = error
-        );
-    console.log("message: " + this.message);
+        headers: new HttpHeaders().set('Authorization', `Bearer ${access}`),
+        responseType: 'text'
+      });
 
     // var request = require("request");// Using request, not sure if this will work for production, angular does not seem to fully support it by default
     // // Swapping the authorization code for tokens
