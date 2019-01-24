@@ -29,19 +29,13 @@ export class AuthService {
 
   login() {
     // Auth0 authorize request
-    // console.log("login");
     this.auth0.authorize();
   }
 
   handleLoginCallback() {
-    console.log("callback")
     // When Auth0 hash parsed, get profile
-    // console.log("handleLoginCallback");
     this.auth0.parseHash((err, authResult) => {
-      console.log("authResult:", authResult);
-      console.log("error:",err);
       if (authResult && authResult.accessToken) {
-        console.log("yes handleLoginCallback");
         window.location.hash = '/';
         this.getUserInfo(authResult);
       } else if (err) {
@@ -63,12 +57,7 @@ export class AuthService {
     // Use access token to retrieve user's profile and set session
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
-        // console.log("yes getUserInfo");
         this._setSession(authResult, profile);
-      }
-      else
-      {
-        // console.log("no getUserInfo");
       }
     });
   }
@@ -77,7 +66,6 @@ export class AuthService {
 
     localStorage.setItem('isLoggedIn','true');
     // Save authentication data and update login status subject
-    // console.log("setSession");
     this.expiresAt = authResult.expiresIn * 1000 + Date.now();
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;

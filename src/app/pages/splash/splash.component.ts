@@ -16,16 +16,12 @@ export class SplashComponent implements OnInit {
 
   ngOnInit()
   {
-    console.log("splash");
-    console.log("Run login");
     if (!this.authService.isLoggedIn)
     {
-      console.log("not logged in");
       this.authService.login()
     }
     else
     {
-      console.log("logged in");
       this.router.navigate(['/choose-desk']);
     }
   }
