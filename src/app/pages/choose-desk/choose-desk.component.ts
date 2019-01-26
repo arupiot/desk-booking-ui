@@ -17,12 +17,15 @@ import { AuthService } from './../../auth/auth.service';
 export class ChooseDeskComponent implements OnInit {
   names;
   constructor(
-    
     // public authService: AuthService
   ) { }
 
   ngOnInit() {
     this.names = ["jovial_goldberg","big_volhard","backstabbing_elion","sick_poincare","mad_carson","furious_payne","cranky_lumiere","hopeful_allen","gloomy_volhard","thirsty_morse"];
+  }
+
+  selectDesk(name) {
+    console.log('Selected: ', name);
   }
 
 }
