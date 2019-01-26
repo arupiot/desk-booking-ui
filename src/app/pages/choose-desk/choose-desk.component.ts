@@ -1,7 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Validators, FormsModule } from '@angular/forms';
-
-import { AuthService } from './../../auth/auth.service';
+import { DatastoreService } from 'src/app/services/datastore.service';
 
 
 @Component({
@@ -15,13 +14,28 @@ import { AuthService } from './../../auth/auth.service';
   ]
 })
 export class ChooseDeskComponent implements OnInit {
-  names;
+  desks: Array<any>;
   constructor(
     // public authService: AuthService
+    private datastoreService: DatastoreService
   ) { }
 
   ngOnInit() {
-    this.names = ["jovial_goldberg","big_volhard","backstabbing_elion","sick_poincare","mad_carson","furious_payne","cranky_lumiere","hopeful_allen","gloomy_volhard","thirsty_morse"];
+  
+    this.datastoreService.getDesks()
+    .subscribe(
+      (desks: any) =>{
+        console.log("res: ", desks.items);
+        this.desks = desks.items;
+        
+      }, 
+      error =>{
+        console.log("error message:", error);
+      }
+    );
+
+
+
   }
 
   selectDesk(name) {
