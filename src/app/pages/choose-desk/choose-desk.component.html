@@ -14,7 +14,14 @@
 </div>
 
 <div id="desks">
-  <div *ngFor="let name of names">
-    <div (click)="selectDesk(name)" class="desk">{{name}}</div>
+  <div *ngFor="let desk of desks">
+    <div (click)="selectDesk(desk.id)" class="desk">
+      <div *ngIf="desk.booked === false; else strikethrough">
+          {{desk.name}}
+      </div>
+      <ng-template #strikethrough>
+          <s>{{desk.name}}</s>   
+      </ng-template>
+    </div>
   </div>
 </div>
