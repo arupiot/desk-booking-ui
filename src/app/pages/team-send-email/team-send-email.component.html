@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Please sign in to your IoT Desk</h1>
-  <h5>Enter desk user email(s) (inclusing yourself!)</h5>
+  <h5>Enter desk user email(s) (including yourself!)</h5>
   <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+    
     <div class="form-group">
       <label for="email1" >Email 1</label>
       <input type="email" [(ngModel)]="email1" name="email1" #email="ngModel" email required>
