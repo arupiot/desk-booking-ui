@@ -10,10 +10,10 @@
 
     <div class="form-group">
       <label for="alterEgo">Email 2</label>
-      <input name="email1" [(ngModel)]="email2" type="text" class="form-control" id="alterEgo">
+      <input name="email2" [(ngModel)]="email2" type="text" class="form-control" id="alterEgo">
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid">Book!</button>
+    <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid || !selectedDesk">Book!</button>
   </form>
 </div>
 

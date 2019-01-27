@@ -29,7 +29,8 @@ export class EmailService {
     return this.http.post(
       'http://localhost:8080/email', 
       {
-        "emails" : email
+        "emails" : email,
+        "desk": this._selectedDesk
       }, 
       {
         headers: new HttpHeaders().set('Authorization', `Bearer ${access}`),
