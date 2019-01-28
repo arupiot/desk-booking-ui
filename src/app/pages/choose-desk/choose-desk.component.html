@@ -1,5 +1,30 @@
-<a routerLink="/team-send-email" class="skip-to-email">
+<!-- <a routerLink="/team-send-email" class="skip-to-email">
   <div class="desk-picked">
     Carry on...
   </div>
-</a>
+</a> -->
+
+<div id="top-text">
+  <div class="please">Choose a desk:</div>
+  <div class="help">Help</div>
+</div>
+<div id="team-choice">
+  <!-- <div class="one">One desk</div>
+  <div class="team">Team</div> -->
+</div>
+
+<div id="desks">
+  <div *ngFor="let desk of desks">
+    <div (click)="selectDesk(desk)" class="desk" [ngClass]="{'selected': selectedDeskId===desk.id}" >
+      <div *ngIf="desk.booked === false; else strikethrough">
+          {{desk.name}}
+          <span *ngIf="desk.id === selectedDeskId">
+              &#10004;
+          </span>
+      </div>
+      <ng-template #strikethrough>
+          <s>{{desk.name}}</s>   
+      </ng-template>
+    </div>
+  </div>
+</div>

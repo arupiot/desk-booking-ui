@@ -1,9 +1,11 @@
 <div class="container">
   <h1>Please sign in to your IoT Desk</h1>
-  <form (ngSubmit)="onSubmit()">
+  <h5>Enter desk user email(s) (including yourself!)</h5>
+  <form (ngSubmit)="onSubmit()" #emailForm="ngForm">
+    
     <div class="form-group">
-      <label for="name">Email 1</label>
-      <input name="email1" [(ngModel)]="email1" type="text" class="form-control" id="name" required>
+      <label for="email1" >Email 1</label>
+      <input type="email" [(ngModel)]="email1" name="email1" #email="ngModel" email required>
     </div>
 
     <div class="form-group">
@@ -11,7 +13,10 @@
       <input name="email2" [(ngModel)]="email2" type="text" class="form-control" id="alterEgo">
     </div>
 
-    <button type="submit" class="btn btn-success">Book!</button>
-
+    <button type="submit" class="btn btn-success" [disabled]="!emailForm.form.valid || !selectedDesk">Book!</button>
   </form>
+</div>
+
+<div *ngIf="submittedError">
+  <p>An error has occurred, the email has not been sent. Please try again</p>
 </div>
