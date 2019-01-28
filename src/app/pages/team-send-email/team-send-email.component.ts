@@ -41,6 +41,7 @@ export class TeamSendEmailComponent implements OnInit {
     .subscribe(
       response =>{
         console.log("response:",response);
+        this.emailService.setSelectedDesk(undefined);
         this.router.navigate(['/email-success']);
       }, 
       error =>{
