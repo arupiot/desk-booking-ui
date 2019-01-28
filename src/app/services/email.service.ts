@@ -27,7 +27,8 @@ export class EmailService {
     const access = this.auth.returnAccessToken();
     
     return this.http.post(
-      'http://localhost:8080/email', 
+      // 'http://localhost:8080/email',
+      'https://no8-iot-desk-occupancy.appspot.com/email', 
       {
         "emails" : email,
         "desk": this._selectedDesk
