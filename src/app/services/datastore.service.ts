@@ -7,8 +7,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class DatastoreService {
 
-  // DESKS_API_URL: string = 'http://localhost:8080/api'
-  DESKS_API_URL: string = 'https://no8-iot-desk-occupancy.appspot.com/api'
+  DESKS_API_URL: string = 'https://arup-iot-desk.appspot.com/api'
   message: string;
 
   constructor(
