@@ -28,7 +28,7 @@ export class EmailService {
     
     return this.http.post(
       // 'http://localhost:8080/email',
-      'https://no8-iot-desk-occupancy.appspot.com/email', 
+      'https://arup-iot-desk.appspot.com/email', 
       {
         "emails" : email,
         "desk": this._selectedDesk
