@@ -5,7 +5,7 @@
 </a> -->
 
 <div id="top-text">
-  <div class="please">Book a desk below:</div>
+  <div class="please">Choose a desk:</div>
   <div class="help">Help</div>
 </div>
 <div id="team-choice">
@@ -15,9 +15,12 @@
 
 <div id="desks">
   <div *ngFor="let desk of desks">
-    <div (click)="selectDesk(desk.id)" class="desk">
+    <div (click)="selectDesk(desk)" class="desk" [ngClass]="{'selected': selectedDeskId===desk.id}" >
       <div *ngIf="desk.booked === false; else strikethrough">
           {{desk.name}}
+          <span *ngIf="desk.id === selectedDeskId">
+              &#10004;
+          </span>
       </div>
       <ng-template #strikethrough>
           <s>{{desk.name}}</s>   
