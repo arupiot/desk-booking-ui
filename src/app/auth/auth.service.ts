@@ -81,7 +81,7 @@ export class AuthService {
     // Ensure that returnTo URL is specified in Auth0
     // Application settings for Allowed Logout URLs
     this.auth0.logout({
-      returnTo: 'https://arup-iot-desk.firebaseapp.com',
+      returnTo: 'https://book-ishiki.arupiot.com',
       clientID: environment.auth.clientID
     });
     localStorage.removeItem('isLoggedIn');
