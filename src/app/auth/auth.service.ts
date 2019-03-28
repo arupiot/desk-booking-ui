@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   // Create Auth0 web auth instance
+
   auth0 = new auth0.WebAuth({
     clientID: environment.auth.clientID,
     domain: environment.auth.domain,
@@ -24,6 +25,7 @@ export class AuthService {
   authenticated: boolean = false;
 
   constructor(private router: Router) {
+    console.log('env: ', environment);
     this.getAccessToken();
   }
 
@@ -81,7 +83,7 @@ export class AuthService {
     // Ensure that returnTo URL is specified in Auth0
     // Application settings for Allowed Logout URLs
     this.auth0.logout({
-      returnTo: 'https://arup-iot-desk.firebaseapp.com',
+      returnTo: environment.auth.returnTo,
       clientID: environment.auth.clientID
     });
     localStorage.removeItem('isLoggedIn');

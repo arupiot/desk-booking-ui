@@ -15,6 +15,7 @@ import { CallbackComponent } from './callback.component';
 
 import { EmailService } from './services/email.service';
 import { EmailSuccessComponent } from './pages/email-success/email-success.component';
+import { ImageMapComponent } from './pages/choose-desk/image-map/image-map.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { EmailSuccessComponent } from './pages/email-success/email-success.compo
     TeamSendEmailComponent,
     SplashComponent,
     CallbackComponent,
-    EmailSuccessComponent
+    EmailSuccessComponent,
+    ImageMapComponent
   ],
   imports: [
     BrowserModule,
