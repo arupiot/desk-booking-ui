@@ -10,7 +10,7 @@ export const environment = {
     clientID: 'M0q1Dt5-1OPgqwG2xza_NsnMfYrH_hdD',
     domain: 'angular-authentication.eu.auth0.com',
     // audience: 'http://localhost:3001',
-    redirect: 'https://arup-iot-desk.firebaseapp.com/callback',
+    redirect: 'http://localhost:4200/callback',
     scope: 'openid profile '
   }
 };
