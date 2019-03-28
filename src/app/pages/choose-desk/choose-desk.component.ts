@@ -60,7 +60,6 @@ export class ChooseDeskComponent implements OnInit {
         this.emailService.setDesks(this.desks);
         for (let i = 0; i < this.desks.length; i++)
         {
-          console.log('proc: ', this.desks[i]);
           
           if (this.desks[i]['x'])
           {
@@ -78,7 +77,7 @@ export class ChooseDeskComponent implements OnInit {
               booked: d['booked'],
               cold_img: d['cold_img'],
               fm_name: d['fm_name'],
-              hotDesk: d['hotdesk'],
+              hotdesk: d['hotdesk'],
               id: d['id'],
               sign_in_time: d['sign_in_time'],
               sign_out_time: d['sign_out_time'],

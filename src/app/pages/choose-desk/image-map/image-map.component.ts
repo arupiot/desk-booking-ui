@@ -54,7 +54,7 @@ export class ImageMapComponent implements OnInit {
 
   onAreaCreate(x: number, y: number): ImageMapCoordinate {
     const coordinate = new ImageMapCoordinate({x, y, width: 100, height: 100});
-    return coordinate
+    return coordinate;
   }
 
   onAreaEdit(coordinate: ImageMapCoordinate): ImageMapCoordinate {
@@ -75,7 +75,7 @@ export class ImageMapCoordinate {
   booked?: boolean
   cold_img?: string
   fm_name?: string
-  hotDesk?: boolean
+  hotdesk?: boolean
   id?: number
   sign_in_time?: string
   sign_out_time?: string
