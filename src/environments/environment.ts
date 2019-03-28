@@ -11,7 +11,8 @@ export const environment = {
     domain: 'angular-authentication.eu.auth0.com',
     // audience: 'http://localhost:3001',
     redirect: 'http://localhost:4200/callback',
-    scope: 'openid profile '
+    scope: 'openid profile ',
+    returnTo: 'http://localhost:4200'
   }
 };
 

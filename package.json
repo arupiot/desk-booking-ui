@@ -5,7 +5,8 @@
     "ng": "ng",
     "serve-build": "node server.js",
     "start": "cross-env NODE_PATH=src ng serve -o",
-    "build": "cross-env NODE_PATH=src NODE_ENV=prod ng build",
+    "start-prod": "cross-env NODE_ENV=prod npm run start",
+    "build": "cross-env NODE_PATH=src ng build --prod",
     "test": "cross-env NODE_PATH=src ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
