@@ -46,14 +46,22 @@ export class ChooseDeskComponent implements OnInit {
     .subscribe(
       (desks: any) =>{
         console.log("res: ", desks.items);
-        this.desks = desks.items;
+        this.desks = desks.items.filter( d => d.hotdesk === true);
+
+        console.log('filtered desks: ', this.desks);
+        
+
         this.selectedDesk = this.emailService.getSelectedDesk();
         if (this.selectedDesk) {
           this.selectedDeskId = this.selectedDesk.id;
         }
+
+
         this.emailService.setDesks(this.desks);
-        for (let i = 0; i < this.desks.length-1; i++)
+        for (let i = 0; i < this.desks.length; i++)
         {
+          console.log('proc: ', this.desks[i]);
+          
           if (this.desks[i]['x'])
           {
             let d = this.desks[i];
@@ -78,8 +86,9 @@ export class ChooseDeskComponent implements OnInit {
               vacant: d['vacant']
             }
 
-            if (obj.floor == 1) this.coordinate01.push(obj);
-            else if (obj.floor == 4) this.coordinate04.push(obj);
+            if (obj.floor === 1) this.coordinate01.push(obj);
+            
+            if (obj.floor === 4) this.coordinate04.push(obj);
           }
         }
         console.log("coordinate 01:",this.coordinate01);
