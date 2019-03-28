@@ -19,22 +19,26 @@ export class ChooseDeskComponent implements OnInit {
   desks: Array<any>;
   selectedDesk: any = null;
   selectedDeskId: number = null;
+  floor: number = 4;
   constructor(
     // public authService: AuthService
     private datastoreService: DatastoreService,
     private emailService: EmailService
   ) { }  
 
-  image: string = '/assets/0001.jpeg';
-  coordinates: ImageMapCoordinate[] = [
+  image04: string = '/assets/8.04.jpeg';
+  image01: string = '/assets/8.01.jpeg';
+
+  coordinate01: ImageMapCoordinate[] = []/* = [
     {
       name: '167',
-      x: 1191,
-      y: 997,
+      x: 1173,
+      y: 998,
       width: 20,
       height: 28
     }
-  ]
+  ]*/
+  coordinate04: ImageMapCoordinate[] = []
 
   ngOnInit() {
   
@@ -48,6 +52,26 @@ export class ChooseDeskComponent implements OnInit {
           this.selectedDeskId = this.selectedDesk.id;
         }
         this.emailService.setDesks(this.desks);
+        for (let i = 0; i < this.desks.length-1; i++)
+        {
+          if (this.desks[i]['x'])
+          {
+            let obj: ImageMapCoordinate = {
+              name: this.desks[i]['name'],
+              x: this.desks[i]['x'],
+              y: this.desks[i]['y'],
+              width: 20,
+              height: 28,
+              floor: this.desks[i]['floor'],
+              building: this.desks[i]['building']
+            }
+
+            if (obj.floor == 1) this.coordinate01.push(obj);
+            else if (obj.floor == 4) this.coordinate04.push(obj);
+          }
+        }
+        console.log("coordinate 01:",this.coordinate01);
+        console.log("coordinate 04:",this.coordinate04);
       }, 
       error =>{
         console.log("error message:", error);
@@ -66,7 +90,7 @@ export class ChooseDeskComponent implements OnInit {
   }
 
   getClick(coordinate: ImageMapCoordinate) {
-    console.log('Clicked',coordinate.name);
+    console.log('Clicked',coordinate);
   }
 
 }

@@ -12,8 +12,12 @@
   <!-- <div class="one">One desk</div>
   <div class="team">Team</div> -->
 </div>
-
-<image-map [src]="image" [coordinates]="coordinates" (onClick)="getClick($event)" canEdit="true"></image-map>
+<div *ngIf="floor == 1; else Floor4">
+  <image-map [src]="image01" [coordinates]="coordinate01" (onClick)="getClick($event)" canEdit="true"></image-map>
+</div>
+<ng-template #Floor4>
+  <image-map [src]="image04" [coordinates]="coordinate04" (onClick)="getClick($event)" canEdit="true"></image-map>
+</ng-template>
 
 <div id="desks">
   <div *ngFor="let desk of desks">

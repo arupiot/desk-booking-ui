@@ -69,6 +69,8 @@ export class ImageMapCoordinate {
   width: number = 100
   height: number = 100
   name?: string
+  floor?: number
+  building?: number
 
   constructor(init?: Partial<ImageMapCoordinate>) {
     Object.assign(this, init);
