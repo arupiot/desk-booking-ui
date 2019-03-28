@@ -13,6 +13,8 @@
   <div class="team">Team</div> -->
 </div>
 
+<image-map [src]="image" [coordinates]="coordinates" (onClick)="getClick($event)" canEdit="true"></image-map>
+
 <div id="desks">
   <div *ngFor="let desk of desks">
     <div (click)="selectDesk(desk)" class="desk" [ngClass]="{'selected': selectedDeskId===desk.id}" >

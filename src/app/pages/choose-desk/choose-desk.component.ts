@@ -2,6 +2,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { Validators, FormsModule } from '@angular/forms';
 import { DatastoreService } from 'src/app/services/datastore.service';
 import { EmailService } from 'src/app/services/email.service';
+import { ImageMapCoordinate } from './image-map/image-map.component';
 
 
 @Component({
@@ -23,6 +24,17 @@ export class ChooseDeskComponent implements OnInit {
     private datastoreService: DatastoreService,
     private emailService: EmailService
   ) { }  
+
+  image: string = '/assets/0001.jpeg';
+  coordinates: ImageMapCoordinate[] = [
+    {
+      name: '167',
+      x: 1191,
+      y: 997,
+      width: 20,
+      height: 28
+    }
+  ]
 
   ngOnInit() {
   
@@ -51,6 +63,10 @@ export class ChooseDeskComponent implements OnInit {
       this.selectedDeskId = desk.id;
       this.emailService.setSelectedDesk(desk);
     }
+  }
+
+  getClick(coordinate: ImageMapCoordinate) {
+    console.log('Clicked',coordinate.name);
   }
 
 }
