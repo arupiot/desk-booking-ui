@@ -56,14 +56,26 @@ export class ChooseDeskComponent implements OnInit {
         {
           if (this.desks[i]['x'])
           {
+            let d = this.desks[i];
+
             let obj: ImageMapCoordinate = {
-              name: this.desks[i]['name'],
-              x: this.desks[i]['x'],
-              y: this.desks[i]['y'],
+              name: d['name'],
+              x: d['x'],
+              y: d['y'],
               width: 20,
               height: 28,
-              floor: this.desks[i]['floor'],
-              building: this.desks[i]['building']
+              floor: d['floor'],
+              building: d['building'],
+              arupDeskId: d['arupDeskId'],
+              booked: d['booked'],
+              cold_img: d['cold_img'],
+              fm_name: d['fm_name'],
+              hotDesk: d['hotdesk'],
+              id: d['id'],
+              sign_in_time: d['sign_in_time'],
+              sign_out_time: d['sign_out_time'],
+              user_email: d['user_email'],
+              vacant: d['vacant']
             }
 
             if (obj.floor == 1) this.coordinate01.push(obj);
@@ -90,7 +102,20 @@ export class ChooseDeskComponent implements OnInit {
   }
 
   getClick(coordinate: ImageMapCoordinate) {
-    console.log('Clicked',coordinate);
+    let desk = coordinate;
+
+    console.log('Selected: ', desk);
+    if (desk.booked) {
+      console.log('This desk is already booked! Sorry!')
+    } else {
+      this.selectedDeskId = desk.id;
+      this.emailService.setSelectedDesk(desk);
+    }
+  }
+
+  switchFloor() {
+    if (this.floor == 1) this.floor = 4;
+    else if (this.floor == 4) this.floor = 1;
   }
 
 }

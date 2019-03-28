@@ -12,6 +12,10 @@
   <!-- <div class="one">One desk</div>
   <div class="team">Team</div> -->
 </div>
+
+<div (click)="switchFloor()" id="desks"><div class="desk">Switch Floor</div></div>
+<div id="desks">Floor: {{floor}}</div>
+
 <div *ngIf="floor == 1; else Floor4">
   <image-map [src]="image01" [coordinates]="coordinate01" (onClick)="getClick($event)" canEdit="true"></image-map>
 </div>
