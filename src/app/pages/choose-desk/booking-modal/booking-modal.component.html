@@ -1,7 +1,20 @@
-<div mat-dialog-content>
-  <p>Book this desk until 5:30pm today?</p>
+<div *ngIf="!emailPending && !submittedError; else emailError">
+  <div mat-dialog-content>
+    <p>Book this desk until 5:30pm today?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="bookFromModal()" cdkFocusInitial>Yes!</button>
+  </div>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="bookFromModal()" cdkFocusInitial>Yes!</button>
+<ng-template #emailError>
+  <div mat-dialog-content>
+    <p>Something has gone wrong...</p>
+    <p>Please try again</p>
+  </div>
+</ng-template>
+<div *ngIf="emailPending">
+  <div mat-dialog-content>
+    <p>Email being sent...</p>
+  </div>
 </div>

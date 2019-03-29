@@ -1,5 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { EmailService } from './../../../services/email.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 export interface DialogData {
   animal: string;
@@ -13,9 +16,20 @@ export interface DialogData {
 })
 export class BookingModalComponent {
 
+  submittedError: boolean;
+  error: any;
+  emailPending: boolean;
+
   constructor(
-    public dialogRef: MatDialogRef<BookingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+      public dialogRef: MatDialogRef<BookingModalComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: DialogData,
+      private emailService: EmailService,
+      private authService: AuthService,
+      private router: Router
+    ) {
+      this.emailPending = false;
+      this.submittedError = false;
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -23,6 +37,28 @@ export class BookingModalComponent {
 
   bookFromModal(): void {
     console.log('THEY WANT TO BOOK YEH.');
+    const desk = this.emailService.getSelectedDesk();
+    const email = this.authService.userProfile.email;
+    this.emailPending = true;
+
+    this.emailService.sendEmail({
+      email1: email,
+      email2: null})
+    .subscribe(
+      response =>{
+        console.log("response:",response);
+        this.emailService.setSelectedDesk(undefined);
+        this.router.navigate(['/email-success']);
+        this.dialogRef.close();
+      }, 
+      error =>{
+        this.error = error
+        console.log("error message:", error);
+        this.submittedError = true;
+      }
+    );
+
+    this.emailPending = false;
     
   }
 
