@@ -58,6 +58,8 @@ export class AuthService {
   getUserInfo(authResult) {
     // Use access token to retrieve user's profile and set session
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      console.log('pins: ', profile);
+      
       if (profile) {
         this._setSession(authResult, profile);
       }

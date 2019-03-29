@@ -3,6 +3,9 @@ import { Validators, FormsModule } from '@angular/forms';
 import { DatastoreService } from 'src/app/services/datastore.service';
 import { EmailService } from 'src/app/services/email.service';
 import { ImageMapCoordinate } from './image-map/image-map.component';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material';
+import { BookingModalComponent } from './booking-modal/booking-modal.component';
 
 
 @Component({
@@ -23,7 +26,9 @@ export class ChooseDeskComponent implements OnInit {
   constructor(
     // public authService: AuthService
     private datastoreService: DatastoreService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ) { }  
 
   image04: string = '/assets/8.04.jpeg';
@@ -61,7 +66,7 @@ export class ChooseDeskComponent implements OnInit {
         for (let i = 0; i < this.desks.length; i++)
         {
           
-          if (this.desks[i]['x'])
+          if (this.desks[i]['x'] && !this.desks[i]['booked'])
           {
             let d = this.desks[i];
 
@@ -69,7 +74,7 @@ export class ChooseDeskComponent implements OnInit {
               name: d['name'],
               x: d['x'],
               y: d['y'],
-              width: 20,
+              width: 18,
               height: 28,
               floor: d['floor'],
               building: d['building'],
@@ -99,26 +104,34 @@ export class ChooseDeskComponent implements OnInit {
     );
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(BookingModalComponent, {
+      width: '250px',
+      data: {name: 'yes', animal: 'cat'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
   selectDesk(desk) {
     console.log('Selected: ', desk);
     if (desk.booked) {
       console.log('This desk is already booked! Sorry!')
+      this.toastr.error('(by ' + desk.user_email + ')', 'Already booked!');
     } else {
       this.selectedDeskId = desk.id;
       this.emailService.setSelectedDesk(desk);
+      this.toastr.success('Available!');
+      this.openDialog();
     }
   }
 
   getClick(coordinate: ImageMapCoordinate) {
     let desk = coordinate;
-
-    console.log('Selected: ', desk);
-    if (desk.booked) {
-      console.log('This desk is already booked! Sorry!')
-    } else {
-      this.selectedDeskId = desk.id;
-      this.emailService.setSelectedDesk(desk);
-    }
+    this.selectDesk(desk);
   }
 
   switchFloor() {
