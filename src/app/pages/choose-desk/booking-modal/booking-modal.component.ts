@@ -21,4 +21,9 @@ export class BookingModalComponent {
     this.dialogRef.close();
   }
 
+  bookFromModal(): void {
+    console.log('THEY WANT TO BOOK YEH.');
+    
+  }
+
 }
