@@ -20,17 +20,15 @@ import { ImageMapComponent } from './pages/choose-desk/image-map/image-map.compo
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BookingModalComponent } from './pages/choose-desk/booking-modal/booking-modal.component';
+
+import {
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ChooseDeskComponent,
-    TeamSendEmailComponent,
-    SplashComponent,
-    CallbackComponent,
-    EmailSuccessComponent,
-    ImageMapComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -39,8 +37,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpModule,
     CommonModule,
     ToastrModule.forRoot(),
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
+  declarations: [
+    AppComponent,
+    ChooseDeskComponent,
+    TeamSendEmailComponent,
+    SplashComponent,
+    CallbackComponent,
+    EmailSuccessComponent,
+    ImageMapComponent,
+    BookingModalComponent
+  ],
+  entryComponents: [BookingModalComponent, ChooseDeskComponent],
   providers: [ AuthService, EmailService ],
   bootstrap: [AppComponent]
 })

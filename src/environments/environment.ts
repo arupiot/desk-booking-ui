@@ -12,7 +12,8 @@ export const environment = {
     // audience: 'http://localhost:3001',
     redirect: 'http://localhost:4200/callback',
     scope: 'openid profile email',
-    returnTo: 'http://localhost:4200'
+    returnTo: 'http://localhost:4200',
+    VERSION: require('../../package.json').version
   }
 };
 

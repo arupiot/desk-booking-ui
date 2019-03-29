@@ -5,6 +5,7 @@ export const environment = {
     domain: 'angular-authentication.eu.auth0.com',
     redirect: 'https://book-ishiki.arupiot.com/callback',
     scope: 'openid profile email',
-    returnTo: 'https://book-ishiki.arupiot.com'
+    returnTo: 'https://book-ishiki.arupiot.com',
+    VERSION: require('../../package.json').version
   }
 };

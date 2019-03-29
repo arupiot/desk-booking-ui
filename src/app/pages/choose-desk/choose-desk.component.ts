@@ -4,6 +4,8 @@ import { DatastoreService } from 'src/app/services/datastore.service';
 import { EmailService } from 'src/app/services/email.service';
 import { ImageMapCoordinate } from './image-map/image-map.component';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material';
+import { BookingModalComponent } from './booking-modal/booking-modal.component';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class ChooseDeskComponent implements OnInit {
     // public authService: AuthService
     private datastoreService: DatastoreService,
     private emailService: EmailService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ) { }  
 
   image04: string = '/assets/8.04.jpeg';
@@ -101,6 +104,18 @@ export class ChooseDeskComponent implements OnInit {
     );
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(BookingModalComponent, {
+      width: '250px',
+      data: {name: 'yes', animal: 'cat'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
   selectDesk(desk) {
     console.log('Selected: ', desk);
     if (desk.booked) {
@@ -110,6 +125,7 @@ export class ChooseDeskComponent implements OnInit {
       this.selectedDeskId = desk.id;
       this.emailService.setSelectedDesk(desk);
       this.toastr.success('Available!');
+      this.openDialog();
     }
   }
 
