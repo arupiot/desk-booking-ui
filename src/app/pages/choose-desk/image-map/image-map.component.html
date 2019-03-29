@@ -1,7 +1,7 @@
 <div id="image-container">
 	<img [src]="src">
   <div class="coordinates-container">
-    <div class="area" [ngStyle]="getCoordinateStyle(coordinate)" [title]="coordinate.name" *ngFor="let coordinate of coordinates" (click)="onAreaClick(coordinate)" (contextmenu)="onAreaEdit(coordinate)">
+    <div class="area" [ngStyle]="getCoordinateStyle(coordinate)" [title]="coordinate.name" *ngFor="let coordinate of coordinates" (click)="onAreaClick(coordinate)" (contextmenu)="onAreaEdit(coordinate)"><span class="tooltip">This desk has been booked by {{coordinate.useremail}}</span>
     </div>
   </div>
 </div>
