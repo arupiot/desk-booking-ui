@@ -29,7 +29,7 @@ export class TeamSendEmailComponent implements OnInit {
   ngOnInit() {
     this.selectedDesk = this.emailService.getSelectedDesk();
     console.log('profile: ', this.authService.userProfile)
-    this.email1 = this.authService.userProfile.name;
+    this.email1 = this.authService.userProfile.email;
   }
 
   onSubmit(){

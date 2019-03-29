@@ -105,7 +105,7 @@ export class ChooseDeskComponent implements OnInit {
     console.log('Selected: ', desk);
     if (desk.booked) {
       console.log('This desk is already booked! Sorry!')
-      this.toastr.error('(Taken by ' + desk.user_email + ')', 'Already booked!');
+      this.toastr.error('(by ' + desk.user_email + ')', 'Already booked!');
     } else {
       this.selectedDeskId = desk.id;
       this.emailService.setSelectedDesk(desk);
@@ -115,14 +115,7 @@ export class ChooseDeskComponent implements OnInit {
 
   getClick(coordinate: ImageMapCoordinate) {
     let desk = coordinate;
-
-    console.log('Selected: ', desk);
-    if (desk.booked) {
-      console.log('This desk is already booked! Sorry!')
-    } else {
-      this.selectedDeskId = desk.id;
-      this.emailService.setSelectedDesk(desk);
-    }
+    this.selectDesk(desk);
   }
 
   switchFloor() {
