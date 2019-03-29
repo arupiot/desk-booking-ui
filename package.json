@@ -27,6 +27,7 @@
     "auth0-js": "^9.8.2",
     "core-js": "^2.5.4",
     "cross-env": "^5.2.0",
+    "font-awesome": "^4.7.0",
     "ngx-toastr": "^10.0.2",
     "request": "^2.88.0",
     "rxjs": "^6.0.0",

@@ -66,7 +66,7 @@ export class ChooseDeskComponent implements OnInit {
         for (let i = 0; i < this.desks.length; i++)
         {
           
-          if (this.desks[i]['x'] && !this.desks[i]['booked'])
+          if (this.desks[i]['x']/* && !this.desks[i]['booked']*/)
           {
             let d = this.desks[i];
 
