@@ -17,6 +17,10 @@ import { EmailService } from './services/email.service';
 import { EmailSuccessComponent } from './pages/email-success/email-success.component';
 import { ImageMapComponent } from './pages/choose-desk/image-map/image-map.component';
 
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,10 @@ import { ImageMapComponent } from './pages/choose-desk/image-map/image-map.compo
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    CommonModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [ AuthService, EmailService ],
   bootstrap: [AppComponent]

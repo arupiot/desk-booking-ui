@@ -3,6 +3,7 @@ import { Validators, FormsModule } from '@angular/forms';
 import { DatastoreService } from 'src/app/services/datastore.service';
 import { EmailService } from 'src/app/services/email.service';
 import { ImageMapCoordinate } from './image-map/image-map.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ChooseDeskComponent implements OnInit {
   constructor(
     // public authService: AuthService
     private datastoreService: DatastoreService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private toastr: ToastrService
   ) { }  
 
   image04: string = '/assets/8.04.jpeg';
@@ -103,9 +105,11 @@ export class ChooseDeskComponent implements OnInit {
     console.log('Selected: ', desk);
     if (desk.booked) {
       console.log('This desk is already booked! Sorry!')
+      this.toastr.error('(Taken by ' + desk.user_email + ')', 'Already booked!');
     } else {
       this.selectedDeskId = desk.id;
       this.emailService.setSelectedDesk(desk);
+      this.toastr.success('Available!');
     }
   }
 
