@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'image-map',
@@ -19,7 +21,11 @@ export class ImageMapComponent implements OnInit {
   @Output('onClick')
   onClick: EventEmitter<ImageMapCoordinate> = new EventEmitter();
 
-  constructor() { }
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'booked',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-face-24px.svg'));
+   }
 
   ngOnInit() {  }
 
