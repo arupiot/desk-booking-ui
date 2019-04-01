@@ -22,6 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingModalComponent } from './pages/choose-desk/booking-modal/booking-modal.component';
 
+import { MatIconModule } from '@angular/material/icon';
+
 import {
   MatDialogModule,
   MatFormFieldModule,
@@ -40,7 +42,8 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   declarations: [
     AppComponent,

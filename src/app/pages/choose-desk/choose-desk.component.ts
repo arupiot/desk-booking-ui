@@ -66,7 +66,7 @@ export class ChooseDeskComponent implements OnInit {
         for (let i = 0; i < this.desks.length; i++)
         {
           
-          if (this.desks[i]['x'] && !this.desks[i]['booked'])
+          if (this.desks[i]['x']/* && !this.desks[i]['booked']*/)
           {
             let d = this.desks[i];
 
@@ -74,8 +74,8 @@ export class ChooseDeskComponent implements OnInit {
               name: d['name'],
               x: d['x'],
               y: d['y'],
-              width: 18,
-              height: 28,
+              width: 15,
+              height: 25,
               floor: d['floor'],
               building: d['building'],
               arupDeskId: d['arupDeskId'],
