@@ -16,11 +16,11 @@
 <div (click)="switchFloor()" id="desks"><div class="desk">Switch Floor</div></div>
 <div id="desks">Floor: {{floor}}</div>
 
-<div *ngIf="floor == 1; else Floor4">
+<div class="image" *ngIf="floor == 1; else Floor4">
   <image-map [src]="image01" [coordinates]="coordinate01" (onClick)="getClick($event)" canEdit="true"></image-map>
 </div>
 <ng-template #Floor4>
-  <image-map [src]="image04" [coordinates]="coordinate04" (onClick)="getClick($event)" canEdit="true"></image-map>
+  <div class="image"><image-map [src]="image04" [coordinates]="coordinate04" (onClick)="getClick($event)" canEdit="true"></image-map></div>
 </ng-template>
 
 <div id="desks">
