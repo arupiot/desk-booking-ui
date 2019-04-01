@@ -6,6 +6,7 @@ import { ImageMapCoordinate } from './image-map/image-map.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material';
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
+import { getViewData } from '@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -46,7 +47,10 @@ export class ChooseDeskComponent implements OnInit {
   coordinate04: ImageMapCoordinate[] = []
 
   ngOnInit() {
-  
+    this.getData();
+    
+  }
+  getData() {
     this.datastoreService.getDesks()
     .subscribe(
       (desks: any) =>{
@@ -112,6 +116,8 @@ export class ChooseDeskComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.getData();
+
       // this.animal = result;
     });
   }
