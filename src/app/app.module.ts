@@ -23,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingModalComponent } from './pages/choose-desk/booking-modal/booking-modal.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from './material.module';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   MatDialogModule,
@@ -43,7 +46,9 @@ import {
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   declarations: [
     AppComponent,

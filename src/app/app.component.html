@@ -1,9 +1,57 @@
-<div class="header">
+<!-- <div class="header">
   <div class="nav links">
     <a routerLink="/choose-desk" class="text">Choose Desk &nbsp; &nbsp;</a>
     <a (click)="logout()" class="text">Logout</a>
     <img class="logo" src="/assets/arupLogo.png" height="10%" width="10%">
   </div>
-</div>
+</div> -->
 
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav  #sidenav role="navigation">
+   <mat-nav-list>
+    <a mat-list-item routerLink="/choose-desk">
+      <mat-icon class="icon">home</mat-icon>
+      <span class="label">Choose desk</span>
+    </a>
+    <a mat-list-item (click)="logout()">
+      <mat-icon class="icon">input</mat-icon>
+        <span class="label">Logout</span>
+    </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+     <div fxHide.gt-xs>
+       <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+     <div>
+       <a>
+          IoT Desk Booking
+       </a>
+     </div>
+     <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            <li>
+                <a routerLink="/choose-desk">
+                  <mat-icon class="icon">home</mat-icon>
+                  <span  class="label">Choose Desk</span>
+                 </a>
+            </li>
+            <li>
+              <a (click)="logout()">
+                  <mat-icon class="icon">input</mat-icon>  
+                  <span class="label">Logout</span>
+              </a>
+            </li>
+        </ul>
+     </div>
+    </mat-toolbar>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
