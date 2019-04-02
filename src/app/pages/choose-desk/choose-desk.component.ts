@@ -51,6 +51,10 @@ export class ChooseDeskComponent implements OnInit {
     
   }
   getData() {
+    this.desks = [];
+    this.coordinate01 = [];
+    this.coordinate04 = [];
+
     this.datastoreService.getDesks()
     .subscribe(
       (desks: any) =>{
