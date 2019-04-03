@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { EmailService } from './../../../services/email.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface DialogData {
   animal: string;
@@ -25,7 +26,8 @@ export class BookingModalComponent {
       @Inject(MAT_DIALOG_DATA) public data: DialogData,
       private emailService: EmailService,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private toastr: ToastrService,
     ) {
       this.emailPending = false;
       this.submittedError = false;
@@ -47,8 +49,8 @@ export class BookingModalComponent {
     .subscribe(
       response =>{
         console.log("response:",response);
-        this.emailService.setSelectedDesk(undefined);
-        this.router.navigate(['/email-success']);
+        this.emailService.setSelectedDesk(undefined);        
+        this.toastr.success('Success! Check your email...');
         this.dialogRef.close();
       }, 
       error =>{
