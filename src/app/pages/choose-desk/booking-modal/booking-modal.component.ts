@@ -49,8 +49,7 @@ export class BookingModalComponent {
     .subscribe(
       response =>{
         console.log("response:",response);
-        this.emailService.setSelectedDesk(undefined);
-        // this.router.navigate(['/email-success']);
+        this.emailService.setSelectedDesk(undefined);        
         this.toastr.success('Success! Check your email...');
         this.dialogRef.close();
       }, 
