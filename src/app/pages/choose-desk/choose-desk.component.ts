@@ -22,7 +22,11 @@ export class ChooseDeskComponent implements OnInit {
   desks: Array<any>;
   selectedDesk: any = null;
   selectedDeskId: number = null;
+
   floor: number = 4;
+  floors: number[] = [1,4,5];
+  currentfloor: number = 0;
+
   constructor(
     // public authService: AuthService
     private datastoreService: DatastoreService,
@@ -34,15 +38,7 @@ export class ChooseDeskComponent implements OnInit {
   image04: string = '/assets/8.04.jpeg';
   image01: string = '/assets/8.01.jpeg';
 
-  coordinate01: ImageMapCoordinate[] = []/* = [
-    {
-      name: '167',
-      x: 1173,
-      y: 998,
-      width: 20,
-      height: 28
-    }
-  ]*/
+  coordinate01: ImageMapCoordinate[] = []
   coordinate04: ImageMapCoordinate[] = []
 
   ngOnInit() {
@@ -135,8 +131,11 @@ export class ChooseDeskComponent implements OnInit {
   }
 
   switchFloor() {
-    if (this.floor == 1) this.floor = 4;
-    else if (this.floor == 4) this.floor = 1;
+    this.currentfloor ++;
+    
+    if (this.currentfloor >= this.floors.length) this.currentfloor = 0;
+    
+    this.floor = this.floors[this.currentfloor];
   }
 
 }
