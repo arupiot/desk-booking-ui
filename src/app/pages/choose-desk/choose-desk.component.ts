@@ -36,20 +36,22 @@ export class ChooseDeskComponent implements OnInit {
     public dialog: MatDialog
   ) { }  
 
-  image04: string = '/assets/8.04.jpeg';
   image01: string = '/assets/8.01.jpeg';
+  image04: string = '/assets/8.04.jpeg';
+  image05: string = '/assets/'
 
-  coordinate01: ImageMapCoordinate[] = []
-  coordinate04: ImageMapCoordinate[] = []
+  coordinate01: ImageMapCoordinate[] = [];
+  coordinate04: ImageMapCoordinate[] = [];
+  coordinate05: ImageMapCoordinate[] = [];
 
   ngOnInit() {
     this.getData();
-    
   }
   getData() {
     this.desks = [];
     this.coordinate01 = [];
     this.coordinate04 = [];
+    this.coordinate05 = [];
 
     this.datastoreService.getDesks()
     .subscribe(
@@ -94,13 +96,22 @@ export class ChooseDeskComponent implements OnInit {
               vacant: d['vacant']
             }
 
-            if (obj.floor === 1) this.coordinate01.push(obj);
+            switch(obj.floor)
+            {
+              case 1: this.coordinate01.push(obj); break;
+              case 4: this.coordinate04.push(obj); break;
+              case 5: this.coordinate05.push(obj); break;
+            }
+            // if (obj.floor === 1) this.coordinate01.push(obj);
             
-            if (obj.floor === 4) this.coordinate04.push(obj);
+            // if (obj.floor === 4) this.coordinate04.push(obj);
+
+
           }
         }
         console.log("coordinate 01:",this.coordinate01);
         console.log("coordinate 04:",this.coordinate04);
+        console.log("coordinate 05:",this.coordinate05);
       }, 
       error =>{
         console.log("error message:", error);

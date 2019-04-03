@@ -20,7 +20,12 @@
   <image-map [src]="image01" [coordinates]="coordinate01" (onClick)="getClick($event)" canEdit="true"></image-map>
 </div>
 <ng-template #Floor4>
-  <div class="image"><image-map [src]="image04" [coordinates]="coordinate04" (onClick)="getClick($event)" canEdit="true"></image-map></div>
+  <div *ngIf="floor == 4; else Floor5">
+    <div class="image"><image-map [src]="image04" [coordinates]="coordinate04" (onClick)="getClick($event)" canEdit="true"></image-map></div>
+  </div>
+</ng-template>
+<ng-template #Floor5>
+    <div class="image"><image-map [src]="image05" [coordinates]="coordinate05" (onClick)="getClick($event)" canEdit="true"></image-map></div>
 </ng-template>
 
 <div id="desks">
