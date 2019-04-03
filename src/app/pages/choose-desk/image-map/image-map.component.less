@@ -15,6 +15,19 @@
         box-shadow: 0 0px 5px darkgray;
       }
     }
+    
+  }
+  .coordinates-container{
+    .booked {
+      position: absolute;
+      cursor: pointer;
+      transition: all 0.1s;
+      border: 3px solid rgb(212, 0, 0);
+      &:hover{
+        border: 4px solid red;
+        box-shadow: 0 0px 5px darkgray;
+      }
+    }
   }
   
   #image-container {
@@ -26,7 +39,7 @@
     filter: grayscale(100%);
   }
 
-.area .tooltip {
+.booked .tooltip {
   visibility: hidden;
   width: 15em;
   background-color: black;
@@ -40,16 +53,16 @@
   bottom: 1.5em;
   z-index: 1;
 }
-.area:hover .tooltip {
+.booked:hover .tooltip {
   visibility: visible;
 }
-.area .booked {
-  width: 15px;
-  height: 25px;
+.fill {
+  width: 10px;
+  height: 20px;
   background-color: white;
 }
 
-.area .up {
+.up {
   position: relative;
   // bottom: 1.5em;
 }

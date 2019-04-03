@@ -29,6 +29,11 @@ export class ImageMapComponent implements OnInit {
 
   ngOnInit() {  }
 
+   getClass(co) {
+    if (co.booked) return "booked";
+    else return "area";
+   }
+
   getCoordinateStyle(coordinate: ImageMapCoordinate): object {
     return {
       top: `${coordinate.y}px`,
