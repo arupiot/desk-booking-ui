@@ -38,7 +38,6 @@ export class BookingModalComponent {
   }
 
   bookFromModal(): void {
-    console.log('THEY WANT TO BOOK YEH.');
     const desk = this.emailService.getSelectedDesk();
     const email = this.authService.userProfile.email;
     this.emailPending = true;

@@ -47,7 +47,7 @@ export class ChooseDeskComponent implements OnInit {
   coordinate04: ImageMapCoordinate[] = []
 
   ngOnInit() {
-    this.toastr.info('Scroll around the map below to find a desk');
+    this.toastr.info('Click a desk name to reserve a desk');
 
     this.getData();
     
